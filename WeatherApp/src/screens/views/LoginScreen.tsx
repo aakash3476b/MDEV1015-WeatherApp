@@ -21,6 +21,12 @@ const LoginScreen = ({
   const [password, setPassword] = useState('');
 
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowSplash(false);
+    }, 2000);
+  }, []);
+
 
 
   const handleLogin = () => {
@@ -38,11 +44,6 @@ const LoginScreen = ({
     });
   };
 
-
-  if (showSplash) {
-    // Show the splash screen while loading fonts and assets
-    return <Onboarding />;
-  }
   
   const handleSignUp = () => {
     console.log("Signing up");
@@ -50,37 +51,42 @@ const LoginScreen = ({
   }
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../assets/images/login.png')} 
-        style={styles.logo}
-      />
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Email"
-          placeholderTextColor="#767676"
-          onChangeText={text => setEmail(text)}
-          value={email}
-          autoCapitalize="none"
-          style={styles.input}
+    <>
+    {showSplash ? (
+        <Onboarding/>
+      ) : (
+      <View style={styles.container}>
+        <Image
+          source={require('../../assets/images/login.png')} 
+          style={styles.logo}
         />
-        <TextInput
-          autoCapitalize="none"
-          placeholder="Password"
-          placeholderTextColor="#767676"
-          secureTextEntry
-          onChangeText={text => setPassword(text)}
-          value={password}
-          style={styles.input}
-        />
-        <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>Sign In</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="#767676"
+            onChangeText={text => setEmail(text)}
+            value={email}
+            autoCapitalize="none"
+            style={styles.input}
+          />
+          <TextInput
+            autoCapitalize="none"
+            placeholder="Password"
+            placeholderTextColor="#767676"
+            secureTextEntry
+            onChangeText={text => setPassword(text)}
+            value={password}
+            style={styles.input}
+          />
+          <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
+            <Text style={styles.loginButtonText}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity onPress={handleSignUp}>
+          <Text style={styles.signupText}>Don't have an account? Sign up</Text>
         </TouchableOpacity>
-      </View>
-      <TouchableOpacity onPress={handleSignUp}>
-        <Text style={styles.signupText}>Don't have an account? Sign up</Text>
-      </TouchableOpacity>
-    </View>
+      </View>)}
+    </>
   );
 };
 
