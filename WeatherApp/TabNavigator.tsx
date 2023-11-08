@@ -1,40 +1,47 @@
-/* eslint-disable react-native/no-inline-styles */
-/* eslint-disable react/no-unstable-nested-components */
-import React, {useEffect, useState} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
-import {Image} from 'react-native';
-//import * as Font from 'expo-font';
-import SettingsPage from './src/components/SettingsPage';
+import React, { useEffect, useState } from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { Image } from 'react-native';
+import SettingsScreen from './src/screens/views/SettingsScreen';
 import HomePage from './src/components/HomePage/HomePage';
-import FavoriteScreen from './src/screens/FavoriteScreen';
+import FavoriteScreen from './src/screens/views/FavoriteScreen';
 import CityWeatherDetails from './src/components/CityWeatherDetails/CityWeatherDetails';
 import Contact from './src/components/Contact';
-import {LIGHT_COLORS} from './src/styles/Colors';
-import SearchWeather from './src/components/SearchWeather';
-import Onboarding from './src/screens/Onboarding';
+import { DARK_COLORS, LIGHT_COLORS } from './src/styles/Colors';
+import Onboarding from './src/screens/views/Onboarding';
+import SearchWeather from './src/components/Searchweather';
+
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-  const [showSplash, setShowSplash] = useState(true);
-  useEffect(() => {
-    // async function loadFonts() {
-    //   await Font.loadAsync({
-    //     'Noto Sans': require('./assets/Noto_Sans/NotoSans-Regular.ttf'),
-    //   });
-    setShowSplash(false);
-    //}
-    // loadFonts();
-  }, []);
+  // Moved to login screen
+  // const [fontLoaded, setFontLoaded] = useState(false);
+  // const [showSplash, setShowSplash] = useState(true);
 
-  if (showSplash) {
-    // Show the splash screen while loading fonts and assets
-    return <Onboarding />;
-  }
+
+  // useEffect(() => {
+  //   async function loadFont() {
+  //     await Font.loadAsync({
+  //       'Noto-Sans': require('./assets/Noto_Sans/NotoSans-Regular.ttf'),
+  //     });
+  //     setFontLoaded(true);
+  //   }
+  //   loadFont();
+
+  //   setTimeout(() => setShowSplash(false), 3000);
+  // }, []);
+
+  // if (!fontLoaded) {
+  //   return null;
+  // }
+
+  // if (showSplash) {
+  //   // Show the splash screen while loading fonts and assets
+  //   return <Onboarding />;
+  // }
 
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
@@ -42,22 +49,23 @@ const TabNavigator = () => {
             fontFamily: 'Noto-Sans',
             fontSize: 12,
           },
-          tabBarActiveTintColor: LIGHT_COLORS.PRIMARY_TEXT_COLOR,
-          tabBarInactiveTintColor: LIGHT_COLORS.TERTIARY_TEXT_COLOR,
+          tabBarActiveTintColor: LIGHT_COLORS.PRIMARY_COLOR,
+          tabBarInactiveTintColor: DARK_COLORS.PRIMARY_TEXT_COLOR,
           tabBarStyle: {
-            backgroundColor: LIGHT_COLORS.PRIMARY_BACKGROUND_COLOR,
+            backgroundColor: DARK_COLORS.SECONDARY_COLOR,
             borderTopWidth: 0,
             borderTopColor: LIGHT_COLORS.SECONDARY_BACKGROUND_COLOR,
           },
-        }}>
+        }}
+      >
         <Tab.Screen
           name="Home"
           component={HomePage}
           options={{
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <Image
-                source={require('./assets/home.png')}
-                style={{tintColor: color, width: 24, height: 24}}
+                source={require("./assets/home.png")}
+                style={{ tintColor: color, width: 24, height: 24 }}
               />
             ),
           }}
@@ -66,10 +74,10 @@ const TabNavigator = () => {
           name="Details"
           component={CityWeatherDetails}
           options={{
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <Image
-                source={require('./assets/details.png')}
-                style={{tintColor: color, width: 24, height: 24}}
+                source={require("./assets/details.png")}
+                style={{ tintColor: color, width: 24, height: 24 }}
               />
             ),
           }}
@@ -78,10 +86,10 @@ const TabNavigator = () => {
           name="Search"
           component={SearchWeather}
           options={{
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <Image
-                source={require('./assets/search.png')}
-                style={{tintColor: color, width: 24, height: 24}}
+                source={require("./assets/search.png")}
+                style={{ tintColor: color, width: 24, height: 24 }}
               />
             ),
           }}
@@ -90,22 +98,22 @@ const TabNavigator = () => {
           name="Favorites"
           component={FavoriteScreen}
           options={{
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <Image
-                source={require('./assets/favorites.png')}
-                style={{tintColor: color, width: 24, height: 24}}
+                source={require("./assets/favorites.png")}
+                style={{ tintColor: color, width: 24, height: 24 }}
               />
             ),
           }}
         />
         <Tab.Screen
           name="Settings"
-          component={SettingsPage}
+          component={SettingsScreen}
           options={{
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <Image
-                source={require('./assets/settings.png')}
-                style={{tintColor: color, width: 24, height: 24}}
+                source={require("./assets/settings.png")}
+                style={{ tintColor: color, width: 24, height: 24 }}
               />
             ),
           }}
@@ -114,16 +122,15 @@ const TabNavigator = () => {
           name="Contact"
           component={Contact}
           options={{
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <Image
-                source={require('./assets/contact.png')}
-                style={{tintColor: color, width: 24, height: 24}}
+                source={require("./assets/contact.png")}
+                style={{ tintColor: color, width: 24, height: 24 }}
               />
             ),
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 };
 

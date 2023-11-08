@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { DARK_COLORS } from "./Colors";
+import { DARK_COLORS, GRAY } from "./Colors";
 
 
 export const favoritePageStyles = StyleSheet.create({
@@ -66,7 +66,8 @@ export const favoritePageStyles = StyleSheet.create({
         fontSize: 32,
         padding: 30,
         fontWeight: "bold",
-        color: DARK_COLORS.TERTIARY_TEXT_COLOR
+        color: DARK_COLORS.PRIMARY_TEXT_COLOR,
+        backgroundColor: DARK_COLORS.PRIMARY_BACKGROUND_COLOR
     },
     backgroundImage: {
         flex: 10,
@@ -78,3 +79,79 @@ export const favoritePageStyles = StyleSheet.create({
         flex: 1,
     },
 });
+
+export const signUpPageStyles = StyleSheet.create({
+    mainBody: {
+        alignItems: "center",
+        justifyContent: "flex-start",
+        flex: 1,
+        width: "100%",
+        backgroundColor: DARK_COLORS.PRIMARY_BACKGROUND_COLOR
+    },
+    headerImageView: {
+        flex: 1,
+        flexShrink: 1
+    },
+    headerImage: {
+        flex: 2,
+    },
+    headerView: {
+    },
+    header: {
+        flexBasis: 50,
+        flexShrink: 1,
+        color: DARK_COLORS.TERTIARY_TEXT_COLOR,
+        fontSize: 32,
+    },
+    inputView: {
+        width: "100%",
+        justifyContent: "flex-start",
+        alignItems: "center"
+    },
+    inputTextField: {
+        borderWidth: 3,
+        borderRadius: 10,
+        color: GRAY.s600,
+        width: "80%",
+        padding: 10,
+        fontSize: 24,
+        margin:5
+    },
+    signUpButton: {
+        backgroundColor: DARK_COLORS.PRIMARY_COLOR,
+        color: DARK_COLORS.PRIMARY_TEXT_COLOR,
+        borderWidth: 3,
+        borderRadius: 20,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        flexShrink: 1,
+        maxWidth: '90%',
+    },
+    signUpButtonText: {
+        fontSize: 24
+    },
+    buttonView: {
+        justifyContent: "flex-start",
+        alignItems: "center",
+        flex: 1,
+        padding: 10
+    },
+    signUpButtonView: {
+        maxWidth: '90%',
+        alignItems: 'center',
+    },
+    loginText: {
+        color: DARK_COLORS.TERTIARY_TEXT_COLOR
+    },
+    loginAnchorText: {
+        color: DARK_COLORS.PRIMARY_COLOR,
+        alignSelf: 'center'
+    },
+    loginOpacityComponent: {
+        textAlignVertical: "center"
+    },
+    loginView: {
+        justifyContent: "center",
+        alignItems: "center"
+    }
+})
