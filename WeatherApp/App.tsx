@@ -1,13 +1,39 @@
-import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import TabNavigator from './TabNavigator';
-import {LIGHT_COLORS} from './src/styles/Colors';
+import { LIGHT_COLORS } from './src/styles/Colors';
+import LoginScreen from './src/screens/views/LoginScreen';
+import ContactUs from './src/components/Contact';
+import { createStackNavigator } from '@react-navigation/stack';
+import SignUpScreen from './src/screens/views/SignUpScreen';
+import { NavigationContainer } from '@react-navigation/native';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <TabNavigator />
-    </SafeAreaView>
+
+    <NavigationContainer>
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen name="Login"
+       component={LoginScreen}
+         options={{
+                  headerShown: false,
+                }} />
+      <Stack.Screen name="Sign Up" component={SignUpScreen} options={{}}/>
+      <Stack.Screen name="Home" component={TabNavigator}   
+         options={{
+              headerShown: false,
+                }} />
+    </Stack.Navigator>
+  </NavigationContainer>
+
+
+//     <SafeAreaView style={styles.container}>
+//       <LoginScreen />
+
+// import { createStackNavigator } from '@react-navigation/stack';
+
+//     </SafeAreaView>
   );
 }
 
