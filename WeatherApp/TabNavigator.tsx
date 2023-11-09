@@ -9,7 +9,7 @@ import CityWeatherDetails from './src/components/CityWeatherDetails/CityWeatherD
 import Contact from './src/components/Contact';
 import { DARK_COLORS, LIGHT_COLORS } from './src/styles/Colors';
 import Onboarding from './src/screens/views/Onboarding';
-import SearchWeather from './src/components/Searchweather';
+import SearchWeather from './src/components/SearchWeather';
 
 
 const Tab = createBottomTabNavigator();
