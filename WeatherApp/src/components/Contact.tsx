@@ -1,11 +1,19 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 
 const ContactUs = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Contact Us</Text>
-      <Text style={styles.subHeading}>Have questions about our application?</Text>
+      <Text style={styles.subHeading}>
+        Have questions about our application?
+      </Text>
 
       <TextInput
         style={styles.input}
